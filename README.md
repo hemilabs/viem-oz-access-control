@@ -16,7 +16,7 @@ npm install viem viem-oz-access-control
 
 This package provides ESM-friendly helpers for interacting with [OpenZeppelin AccessControl](https://docs.openzeppelin.com/contracts/5.x/access-control) contracts using viem.
 
-All the methods are named after the Solidity functions. The ABIs target [OpenZeppelin Contracts v5.x](https://docs.openzeppelin.com/contracts/5.x/access-control), and every entry matches the compiled output of `AccessControl` and `AccessControlDefaultAdminRules`.
+All the methods are named after the Solidity functions. The ABIs target [OpenZeppelin Contracts v5.x](https://docs.openzeppelin.com/contracts/5.x/access-control), and cover the `IAccessControl` and `IAccessControlDefaultAdminRules` interfaces.
 
 `AccessControlDefaultAdminRules` extends `AccessControl`, so this package covers both.
 
