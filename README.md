@@ -279,7 +279,7 @@ const [newDelay, effectSchedule] = await pendingDefaultAdminDelay(client, {
 
 ### `renounceRole`
 
-Gives up a role. `callerConfirmation` must be the caller's own address, otherwise the contract reverts with `AccessControlBadConfirmation`. On a DefaultAdminRules contract, giving up `DEFAULT_ADMIN_ROLE` needs two steps: first call `beginDefaultAdminTransfer` with the zero address, then `acceptDefaultAdminTransfer`. [View docs](https://docs.openzeppelin.com/contracts/5.x/api/access#AccessControl)
+Gives up a role. `callerConfirmation` must be the caller's own address, otherwise the contract reverts. [View docs](https://docs.openzeppelin.com/contracts/5.x/api/access#AccessControl)
 
 ```ts
 renounceRole(client, { address, callerConfirmation, role });
