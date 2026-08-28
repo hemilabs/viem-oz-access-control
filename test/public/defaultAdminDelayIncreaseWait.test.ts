@@ -26,7 +26,7 @@ describe("defaultAdminDelayIncreaseWait", function () {
     await expect(
       // @ts-expect-error - Testing invalid input
       defaultAdminDelayIncreaseWait(client, parameters),
-    ).rejects.toThrow("Invalid address");
+    ).rejects.toThrow("Invalid address for contract");
   });
 
   it("should call readContract if all parameters are valid", async function () {
@@ -42,7 +42,7 @@ describe("defaultAdminDelayIncreaseWait", function () {
   it("should handle empty parameters gracefully", async function () {
     // @ts-expect-error - Testing invalid input
     await expect(defaultAdminDelayIncreaseWait(client, {})).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 
@@ -50,6 +50,6 @@ describe("defaultAdminDelayIncreaseWait", function () {
     await expect(
       // @ts-expect-error - Testing invalid input
       defaultAdminDelayIncreaseWait(client, undefined),
-    ).rejects.toThrow("Invalid address");
+    ).rejects.toThrow("Invalid address for contract");
   });
 });

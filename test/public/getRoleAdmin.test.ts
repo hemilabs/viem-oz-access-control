@@ -25,7 +25,7 @@ describe("getRoleAdmin", function () {
     const parameters = { ...validParameters, address: "invalid_address" };
     // @ts-expect-error - Testing invalid input
     await expect(getRoleAdmin(client, parameters)).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 
@@ -58,13 +58,15 @@ describe("getRoleAdmin", function () {
 
   it("should handle empty parameters gracefully", async function () {
     // @ts-expect-error - Testing invalid input
-    await expect(getRoleAdmin(client, {})).rejects.toThrow("Invalid address");
+    await expect(getRoleAdmin(client, {})).rejects.toThrow(
+      "Invalid address for contract",
+    );
   });
 
   it("should handle no parameters gracefully", async function () {
     // @ts-expect-error - Testing invalid input
     await expect(getRoleAdmin(client, undefined)).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 });

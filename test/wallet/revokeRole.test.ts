@@ -40,7 +40,7 @@ describe("revokeRole", function () {
     const parameters = { ...validParameters, address: "invalid_address" };
     // @ts-expect-error - Testing invalid input
     await expect(revokeRole(client, parameters)).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 
@@ -64,7 +64,7 @@ describe("revokeRole", function () {
     const parameters = { ...validParameters, account: "invalid_account" };
     // @ts-expect-error - Testing invalid input
     await expect(revokeRole(client, parameters)).rejects.toThrow(
-      "Invalid account address",
+      "Invalid address for account",
     );
   });
 
@@ -83,13 +83,15 @@ describe("revokeRole", function () {
 
   it("should handle empty parameters gracefully", async function () {
     // @ts-expect-error - Testing invalid input
-    await expect(revokeRole(client, {})).rejects.toThrow("Invalid address");
+    await expect(revokeRole(client, {})).rejects.toThrow(
+      "Invalid address for contract",
+    );
   });
 
   it("should handle no parameters gracefully", async function () {
     // @ts-expect-error - Testing invalid input
     await expect(revokeRole(client, undefined)).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 });

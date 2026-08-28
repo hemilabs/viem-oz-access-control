@@ -25,7 +25,7 @@ describe("defaultAdmin", function () {
     const parameters = { address: "invalid_address" };
     // @ts-expect-error - Testing invalid input
     await expect(defaultAdmin(client, parameters)).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 
@@ -41,13 +41,15 @@ describe("defaultAdmin", function () {
 
   it("should handle empty parameters gracefully", async function () {
     // @ts-expect-error - Testing invalid input
-    await expect(defaultAdmin(client, {})).rejects.toThrow("Invalid address");
+    await expect(defaultAdmin(client, {})).rejects.toThrow(
+      "Invalid address for contract",
+    );
   });
 
   it("should handle no parameters gracefully", async function () {
     // @ts-expect-error - Testing invalid input
     await expect(defaultAdmin(client, undefined)).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 });

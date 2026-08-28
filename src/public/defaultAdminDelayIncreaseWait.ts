@@ -1,7 +1,8 @@
-import { type Address, type Client, isAddress } from "viem";
+import type { Address, Client } from "viem";
 import { readContract } from "viem/actions";
 
 import { accessControlDefaultAdminRulesAbi } from "../abi.js";
+import { validateAddress, validateClient } from "../validation.js";
 
 export const defaultAdminDelayIncreaseWait = async function (
   client: Client,
@@ -9,12 +10,8 @@ export const defaultAdminDelayIncreaseWait = async function (
 ) {
   const { address } = parameters ?? {};
 
-  if (!client) {
-    throw new Error("Client is not defined");
-  }
-  if (!isAddress(address)) {
-    throw new Error("Invalid address");
-  }
+  validateClient(client);
+  validateAddress(address, "contract");
 
   return readContract(client, {
     abi: accessControlDefaultAdminRulesAbi,

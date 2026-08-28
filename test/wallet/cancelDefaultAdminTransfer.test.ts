@@ -37,7 +37,7 @@ describe("cancelDefaultAdminTransfer", function () {
     await expect(
       // @ts-expect-error - Testing invalid input
       cancelDefaultAdminTransfer(client, parameters),
-    ).rejects.toThrow("Invalid address");
+    ).rejects.toThrow("Invalid address for contract");
   });
 
   it("should call writeContract if all parameters are valid", async function () {
@@ -55,14 +55,14 @@ describe("cancelDefaultAdminTransfer", function () {
   it("should handle empty parameters gracefully", async function () {
     // @ts-expect-error - Testing invalid input
     await expect(cancelDefaultAdminTransfer(client, {})).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 
   it("should handle no parameters gracefully", async function () {
     // @ts-expect-error - Testing invalid input
     await expect(cancelDefaultAdminTransfer(client, undefined)).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 });

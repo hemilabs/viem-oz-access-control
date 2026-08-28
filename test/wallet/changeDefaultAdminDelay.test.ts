@@ -36,7 +36,7 @@ describe("changeDefaultAdminDelay", function () {
     const parameters = { ...validParameters, address: "invalid_address" };
     // @ts-expect-error - Testing invalid input
     await expect(changeDefaultAdminDelay(client, parameters)).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 
@@ -91,14 +91,14 @@ describe("changeDefaultAdminDelay", function () {
   it("should handle empty parameters gracefully", async function () {
     // @ts-expect-error - Testing invalid input
     await expect(changeDefaultAdminDelay(client, {})).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 
   it("should handle no parameters gracefully", async function () {
     // @ts-expect-error - Testing invalid input
     await expect(changeDefaultAdminDelay(client, undefined)).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 });

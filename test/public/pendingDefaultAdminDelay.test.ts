@@ -25,7 +25,7 @@ describe("pendingDefaultAdminDelay", function () {
     const parameters = { address: "invalid_address" };
     // @ts-expect-error - Testing invalid input
     await expect(pendingDefaultAdminDelay(client, parameters)).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 
@@ -42,14 +42,14 @@ describe("pendingDefaultAdminDelay", function () {
   it("should handle empty parameters gracefully", async function () {
     // @ts-expect-error - Testing invalid input
     await expect(pendingDefaultAdminDelay(client, {})).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 
   it("should handle no parameters gracefully", async function () {
     // @ts-expect-error - Testing invalid input
     await expect(pendingDefaultAdminDelay(client, undefined)).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 });

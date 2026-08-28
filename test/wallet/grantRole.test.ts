@@ -40,7 +40,7 @@ describe("grantRole", function () {
     const parameters = { ...validParameters, address: "invalid_address" };
     // @ts-expect-error - Testing invalid input
     await expect(grantRole(client, parameters)).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 
@@ -60,7 +60,7 @@ describe("grantRole", function () {
     const parameters = { ...validParameters, account: "invalid_account" };
     // @ts-expect-error - Testing invalid input
     await expect(grantRole(client, parameters)).rejects.toThrow(
-      "Invalid account address",
+      "Invalid address for account",
     );
   });
 
@@ -79,13 +79,15 @@ describe("grantRole", function () {
 
   it("should handle empty parameters gracefully", async function () {
     // @ts-expect-error - Testing invalid input
-    await expect(grantRole(client, {})).rejects.toThrow("Invalid address");
+    await expect(grantRole(client, {})).rejects.toThrow(
+      "Invalid address for contract",
+    );
   });
 
   it("should handle no parameters gracefully", async function () {
     // @ts-expect-error - Testing invalid input
     await expect(grantRole(client, undefined)).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 });

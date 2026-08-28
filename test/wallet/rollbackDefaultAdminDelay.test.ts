@@ -36,7 +36,7 @@ describe("rollbackDefaultAdminDelay", function () {
     const parameters = { address: "invalid_address" };
     // @ts-expect-error - Testing invalid input
     await expect(rollbackDefaultAdminDelay(client, parameters)).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 
@@ -55,14 +55,14 @@ describe("rollbackDefaultAdminDelay", function () {
   it("should handle empty parameters gracefully", async function () {
     // @ts-expect-error - Testing invalid input
     await expect(rollbackDefaultAdminDelay(client, {})).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 
   it("should handle no parameters gracefully", async function () {
     // @ts-expect-error - Testing invalid input
     await expect(rollbackDefaultAdminDelay(client, undefined)).rejects.toThrow(
-      "Invalid address",
+      "Invalid address for contract",
     );
   });
 });

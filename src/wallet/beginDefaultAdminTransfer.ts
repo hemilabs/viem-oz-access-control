@@ -1,7 +1,8 @@
-import { type Address, type Client, isAddress } from "viem";
+import type { Address, Client } from "viem";
 import { writeContract } from "viem/actions";
 
 import { accessControlDefaultAdminRulesAbi } from "../abi.js";
+import { validateAddress, validateClientAccount } from "../validation.js";
 
 export const beginDefaultAdminTransfer = async function (
   client: Client,
@@ -9,18 +10,9 @@ export const beginDefaultAdminTransfer = async function (
 ) {
   const { address, newAdmin } = parameters ?? {};
 
-  if (!client) {
-    throw new Error("Client is not defined");
-  }
-  if (!client.account) {
-    throw new Error("Client is missing an account");
-  }
-  if (!isAddress(address)) {
-    throw new Error("Invalid address");
-  }
-  if (!isAddress(newAdmin)) {
-    throw new Error("Invalid newAdmin address");
-  }
+  validateClientAccount(client);
+  validateAddress(address, "contract");
+  validateAddress(newAdmin, "newAdmin");
 
   return writeContract(client, {
     abi: accessControlDefaultAdminRulesAbi,

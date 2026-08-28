@@ -1,7 +1,12 @@
-import { type Address, type Client, type Hash, isAddress, isHash } from "viem";
+import type { Address, Client, Hash } from "viem";
 import { writeContract } from "viem/actions";
 
 import { accessControlAbi } from "../abi.js";
+import {
+  validateAddress,
+  validateClientAccount,
+  validateRole,
+} from "../validation.js";
 
 export const renounceRole = async function (
   client: Client,
@@ -9,21 +14,10 @@ export const renounceRole = async function (
 ) {
   const { address, callerConfirmation, role } = parameters ?? {};
 
-  if (!client) {
-    throw new Error("Client is not defined");
-  }
-  if (!client.account) {
-    throw new Error("Client is missing an account");
-  }
-  if (!isAddress(address)) {
-    throw new Error("Invalid address");
-  }
-  if (!isHash(role)) {
-    throw new Error("Invalid role");
-  }
-  if (!isAddress(callerConfirmation)) {
-    throw new Error("Invalid callerConfirmation address");
-  }
+  validateClientAccount(client);
+  validateAddress(address, "contract");
+  validateRole(role);
+  validateAddress(callerConfirmation, "callerConfirmation");
 
   return writeContract(client, {
     abi: accessControlAbi,
