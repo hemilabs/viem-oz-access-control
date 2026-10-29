@@ -15,4 +15,4 @@ jobs:
   run-checks-and-tests:
     uses: hemilabs/.github/.github/workflows/js-checks-pnpm.yml@2900f1ef5a775d5d1f96ae012f5ad5d6e98cd6ec # v1.3.1
     with:
-      node-versions: '["24"]'
+      node-versions: '["24", "26"]'
